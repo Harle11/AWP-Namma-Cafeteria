@@ -1,0 +1,217 @@
+body {
+    background-image: url(../img/banner-bg.jpg);
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+a {
+    color: #fff;
+}
+
+a:hover{
+    color:#fff;
+    outline: none;
+    text-decoration: none;
+}
+  
+a:active,
+a:focus {
+    outline: none;
+    text-decoration: none;
+}
+
+i {
+    color: #fff;
+}
+
+i:hover {
+    cursor: pointer;
+    color: #FFB03B;
+}
+
+#main {
+    margin-top: 90px;
+    transition: margin-left .5s;
+}
+
+button {
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+/*-------- Header -------------*/
+#header {
+    background-color: rgba(0, 0, 0, 0.75);
+    height: 85px;
+    padding: 25px 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+
+#header #logo {
+    text-align: center;
+}
+
+#header #logo i {
+    font-size: 32px;
+}
+
+#header #logo a {
+    font-size: 32px;
+    line-height: 1;
+    font-family: "Satisfy", sans-serif;
+    font-weight: 700;
+    color: #FFB03B;
+}
+
+/*---- side navigation menu ----*/
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.sidenav .top {
+    padding-top: 100px;
+    position: relative;
+}
+
+.sidenav .bottom {
+    width: 100%;
+    bottom: 10px;
+    position: absolute;
+}
+
+.sidenav a {
+    font-family: 'PT Sans', sans-serif;
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav .isactive {
+    color: #FFB03B;
+}
+
+.sidenav a:hover {
+    color: #FFB03B;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 32px;
+    margin-left: 50px;
+}
+
+#card-deck {
+    text-align: center;
+}
+
+#card-deck .card-bg {
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+}
+
+#card-deck a .card-title {
+    margin: 75px 0px;
+    font-family: "Satisfy", sans-serif;
+    color: #FFB03B;
+    font-size: x-large;
+}
+
+.card-search {    
+    text-align: center;
+    padding: 30px 0px;
+    background-color: rgba(0, 0, 0, 0.75);
+    margin-top: 30px;
+    width: 300px;
+}
+
+.card-search .card-title {
+    font-family: "Satisfy", sans-serif;
+    color: #FFB03B;
+    font-size: x-large;
+}
+
+.cartbox {
+    background-color: rgba(0,0,0,0.75);
+    padding: 30px 0px;
+}
+
+.cartbox table {
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+}
+
+.cartbox th, td{
+    padding: 10px;
+}
+
+.payments .card{
+    padding: 10px 30px;
+}
+
+/*------------------------------------------------
+                Responsive
+-------------------------------------------------*/
+@media (max-width: 980px) {
+    .content-holder h2 {
+        font-size: 23px;
+    }
+    .details-text p {
+        line-height: 16.6px;
+    }
+}
+@media (max-width: 767px) {
+    .details-text {
+        border:0px;
+        border-bottom: 2px solid #A87F41;
+    }
+}
+@media (max-width: 450px) {
+    .menu-restaurant {
+    width: 100%;
+    }
+    .details-text {
+        border:0px;
+        border-bottom: 2px solid #A87F41;
+    }
+    .header-h {
+        font-size: 35px;
+    }
+    .header-p, body{
+        font-size: 14px;
+    }
+    .about-info, .mr-15{
+        margin-bottom: 15px;
+    }
+    #banner h2{
+        font-size: 25px;
+    }
+    #banner p{
+        font-size: 25px;
+    }
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
