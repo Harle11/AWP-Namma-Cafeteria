@@ -323,6 +323,77 @@ button:hover {
     border-radius: 3px;
 }
 
+/*------Contact Page------*/
+
+.reg-container1 {
+    padding: 7% 40%;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+}
+
+.card {
+    overflow: hidden;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: #fff;
+	
+}
+
+.card-3 {
+    -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    width: 100%;
+    display: table;
+
+}
+ 
+
+.card-3 .input--style-2 {
+    padding: 9px 0;
+    color: #666;
+    font-size: 16px;
+    font-weight: 500;
+	position:center;
+}
+
+.card-3 a {
+    color: #FFB03B;
+}
+
+.card-3 a:hover {
+    color:#000;
+}
+    .form-label-left{
+        width:150px;
+
+    }
+    .form-line{
+        padding-top:12px;
+        padding-bottom:12px;
+    }
+    .form-label-right{
+        width:150px;
+    }
+    .form-all{
+        width:550px;
+        color:Black !important;
+        font-family'sans-serif';
+        font-size:14px;
+        display: inline-block
+    }
+    .form-radio-item label, .form-checkbox-item label, .form-grading-label, .form-header{ color: Black;
+    }
+
+
+
+
 /*------------------------------------------------
                 Responsive
 -------------------------------------------------*/
