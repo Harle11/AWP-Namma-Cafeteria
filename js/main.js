@@ -17,6 +17,7 @@ function toPayments() {
 }
 
 /* --Contact form-- */
+
 JotForm.init(function(){
 if (window.JotForm && JotForm.accessible) $('input_4').setAttribute('tabindex',0);
       setTimeout(function() {

@@ -328,9 +328,7 @@ button:hover {
 .reg-container1 {
     padding: 7% 40%;
     top:0;
-    left:0;
-    right: 0;
-    bottom: 0;
+    width:100%;
 }
 
 .card {
@@ -354,22 +352,14 @@ button:hover {
 
 }
  
-
 .card-3 .input--style-2 {
     padding: 9px 0;
     color: #666;
     font-size: 16px;
     font-weight: 500;
-	position:center;
+	position:fixed;
 }
 
-.card-3 a {
-    color: #FFB03B;
-}
-
-.card-3 a:hover {
-    color:#000;
-}
     .form-label-left{
         width:150px;
 
@@ -386,13 +376,9 @@ button:hover {
         color:Black !important;
         font-family'sans-serif';
         font-size:14px;
-        display: inline-block
     }
     .form-radio-item label, .form-checkbox-item label, .form-grading-label, .form-header{ color: Black;
     }
-
-
-
 
 /*------------------------------------------------
                 Responsive
