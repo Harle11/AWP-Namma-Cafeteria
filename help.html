@@ -9,6 +9,9 @@
   <meta name="keywords" content="Namma Cafeteria, BMSCE Cafeteria">
 
   <!--link href="img/favicon.jpg" rel="icon"-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/punycode/1.4.1/punycode.min.js"></script>
+  <script src="https://cdn.jotfor.ms/static/prototype.forms.js" type="text/javascript"></script>
+  <script src="https://cdn.jotfor.ms/static/jotform.forms.js?3.3.17188" type="text/javascript"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -27,8 +30,8 @@
         <a href="liveorders.html">Live Orders</a>
       </div>
       <div class="bottom">
-        <a href="help.html">Help?</a>
-        <a href="contact.html">Contact Us</a>
+        <a href="#">Help?</a>
+        <a href="#">Contact Us</a>
       </div>
     </div>
     <div style="margin:0px 40px">
@@ -38,53 +41,30 @@
         </div>
         <a href="home.html">Namma Cafeteria</a>
         <div class="pull-right">
-          <a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+          <a href="home.html"><i class="fa fa-home" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
   </header><!-- End Header -->
-
+  
   <main id="main">
-    <div class="container"><!--Cards-->
-      <div class="card-deck" id="card-deck">
-        <div class="card card-bg" id="card1">
-          <a href="#">
-            <div class="card-body">
-              <div class="card-title">View User Profile</div>
-              <div class="card-text">View your profile as well as your current credit balance</div>
-            </div>
-          </a>
-        </div>
-        <div class="card card-bg">
-          <a href="#">
-            <div class="card-body">
-              <div class="card-title">View Full Menu</div>
-              <div class="card-text">Contains the entire menu</div>
-            </div>
-          </a>
-        </div>
-        <div class="card card-bg">
-          <a href="#">
-            <div class="card-body">
-              <div class="card-title">View Quick Orders</div>
-              <div class="card-text">Order quickly with your quick orders</div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="card card-search" id="cardSearch">
-        <form action="#" method="GET">
-          <div class="card-title">Search for a dish</div>
-          <input class="rounded border-0" type="text" name="dishname" required>
-          <input class="rounded border-0" type="submit" value="Search">
-        </form>
+    <div class="container"><!--Cart-->
+      <div class="cartbox">
+        <h1 style="text-align: center; color:#FFB03B; font-family: Satisfy, sans-serif;">User Guide to the website</h1><br>
+       <ul>
+	   <li><b>Registration Page:</b> Use this page to login using using your college email id and password</li><br>
+	   <li><b>Login Page:</b> Once registration is completed , anytime login can be done using same email id and password</li><br>
+	   <li><b>Credits:</b> If any order gets cancelled and money have been paid by online mode, the same amount will be credited in the form of credits</li><br>
+	   <li><b>Live Orders:</b> This feature shows how much time left in cancellig the order</li>
+	   </ul>
       </div>
     </div>
+    <div class="container d-flex justify-content-around" style="margin-top: 30px;"><!--Buttons-->
+        <a href="home.html" class="nav-btn">Back To Menu</a>
+    </div>
   </main>
-
   <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/main.js"></script>
+ <script src="js/main.js"></script>
 
 </body>
-
 </html>
