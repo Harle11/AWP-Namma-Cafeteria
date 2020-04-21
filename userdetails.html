@@ -4,14 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Namma Cafeteria</title>
+  <title>user details - Namma Cafeteria</title>
   <meta name="description" content="College Cafeteria Ordering App">
   <meta name="keywords" content="Namma Cafeteria, BMSCE Cafeteria">
 
   <!--link href="img/favicon.jpg" rel="icon"-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/punycode/1.4.1/punycode.min.js"></script>
-  <script src="https://cdn.jotfor.ms/static/prototype.forms.js" type="text/javascript"></script>
-  <script src="https://cdn.jotfor.ms/static/jotform.forms.js?3.3.17188" type="text/javascript"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -27,7 +24,7 @@
         <a href="userdetails.html">User Details and Balance</a>
         <a href="#">Quick Orders</a>
         <a href="orderhistory.html">Order History</a>
-        <a href="liveorders.html">Live Orders</a>
+        <a href="userdetails.html" class="isactive">User details</a>
       </div>
       <div class="bottom">
         <a href="help.html">Help?</a>
@@ -46,25 +43,49 @@
       </div>
     </div>
   </header><!-- End Header -->
-  
+
   <main id="main">
     <div class="container"><!--Cart-->
       <div class="cartbox">
-        <h1 style="text-align: center; color:#FFB03B; font-family: Satisfy, sans-serif;">User Guide to the website</h1><br>
-       <ul>
-	   <li><b>Registration Page:</b> Use this page to login using using your college email id and password</li><br>
-	   <li><b>Login Page:</b> Once registration is completed , anytime login can be done using same email id and password</li><br>
-	   <li><b>Credits:</b> If any order gets cancelled and money have been paid by online mode, the same amount will be credited in the form of credits</li><br>
-	   <li><b>Live Orders:</b> This feature shows how much time left in cancellig the order</li>
-	   </ul>
+        <h1 style="text-align: center; color:#FFB03B; font-family: Satisfy, sans-serif;">User Details</h1>
+       
+        <table id="cart-table">
+		<tbody>
+		<tr>
+       <td><label for="Name">Name: </label></td>
+       <td><input id="Name" maxlength= "10"name="name" type="text" /></td>
+       </tr>
+
+     <tr>
+     <td><label for="Email ID">Email ID: </label></td>
+     <td><input id="Email" maxlength="10" name="Email ID" type="text" /></td>
+     </tr>
+
+     <tr>
+     <td><label for="Namma Credit Points Balance">Namma Credit Points Balance: </label></td>
+     <td><input id="Namma Credit Points Balance" maxlength="10" name="Namma Credit Points Balance" type="text" /></td>
+     </tr>
+     
+	<tr>
+     <td><label for="View Order History">View Order History: </label></td>
+     <td><input id="View Order History" maxlength="10" name="View Order History" type="text" /></td>
+     </tr>
+
+          
+           
+          
+         </tbody>
+        </table>
       </div>
     </div>
     <div class="container d-flex justify-content-around" style="margin-top: 30px;"><!--Buttons-->
         <a href="home.html" class="nav-btn">Back To Menu</a>
     </div>
   </main>
+
   <script src="js/bootstrap.bundle.min.js"></script>
- <script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 
 </body>
+
 </html>
