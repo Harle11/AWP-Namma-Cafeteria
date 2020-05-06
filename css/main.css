@@ -50,9 +50,9 @@ button:hover {
     height: 85px;
     padding: 25px 0;
     position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
+    top:0;
+    width:100%;
+    z-index: 997;
 }
 
 #header #logo {
@@ -69,6 +69,10 @@ button:hover {
     font-family: "Satisfy", sans-serif;
     font-weight: 700;
     color: #FFB03B;
+}
+
+#header a {
+    padding-left: 10px;
 }
 
 /*---- side navigation menu ----*/
@@ -123,19 +127,27 @@ button:hover {
 
 #card-deck {
     text-align: center;
+    margin-top: 100px;
 }
 
+#card-deck2 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#card-deck2 .card-bg,
 #card-deck .card-bg {
     height: 300px;
     background-color: #fff;
     color: #000;
 }
 
+#card-deck2 a .card-title,
 #card-deck a .card-title {
     margin: 75px 0px;
     font-family: "Satisfy", sans-serif;
     color: #FFB03B;
-    font-size: x-large;
+    font-size: xx-large;
 }
 
 .card-search {    
@@ -143,19 +155,28 @@ button:hover {
     padding: 30px 0px;
     background-color: #fff;
     margin-top: 30px;
-    width: 300px;
+    width: 100%;
 }
 
 .card-search input {
-    background-color: rgba(0, 0, 0, 0.75);
+    border:2px solid #FFB03B;
+    padding: 5px 10px;
+}
+
+.card-search input[type=submit] {
+    background-color: #FFB03B;
     color: #fff;
-    padding: 0px 10px;
+    cursor: pointer;
+}
+
+.card-search input:focus {
+    outline: none;
 }
 
 .card-search .card-title {
     font-family: "Satisfy", sans-serif;
     color: #FFB03B;
-    font-size: x-large;
+    font-size: xx-large;
 }
 
 .cartbox {
@@ -324,20 +345,11 @@ button:hover {
 }
 
 /*------Contact Page------*/
-
-.reg-container1 {
-    padding: 7% 40%;
-    top:0;
-    width:100%;
-}
-
-.card {
-    overflow: hidden;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    background: #fff;
-	
+.reg-container1{
+    margin-top: 100px;
+    padding: 0% 10%;
+    width: 100%;
+    align-content: center;
 }
 
 .card-3 {
@@ -347,7 +359,7 @@ button:hover {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
-    width: 100%;
+    width: auto;
     display: table;
 
 }
@@ -374,7 +386,6 @@ button:hover {
     .form-all{
         width:550px;
         color:Black !important;
-        font-family'sans-serif';
         font-size:14px;
     }
     .form-radio-item label, .form-checkbox-item label, .form-grading-label, .form-header{ color: Black;

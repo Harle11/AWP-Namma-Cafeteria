@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Payments - Namma Cafeteria</title>
+  <title>Namma Cafeteria</title>
   <meta name="description" content="College Cafeteria Ordering App">
   <meta name="keywords" content="Namma Cafeteria, BMSCE Cafeteria">
 
@@ -39,45 +39,60 @@
         <a href="home.html">Namma Cafeteria</a>
         <div class="pull-right">
           <a href="home.html"><i class="fa fa-home" aria-hidden="true"></i></a>
+          <a href="cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
   </header><!-- End Header -->
 
   <main id="main">
-    <div class="container"><!--Cart-->
-      <div class="cartbox">
-        <h1 style="text-align: center; color:#FFB03B; font-family: Satisfy, sans-serif;">Payment Options</h1>
-        <h4 style="margin-left: 30px; color: #000;">Choose a payment method:</h4>
-        <form class="payments" action="" method="POST">
-          <div class="card-deck">
-            <div class="card" style="border:none">
-              <div class="card-title">
-                <input type="radio" name="option" value="credits" id="credits" checked>
-                <label for="credits">Namma Cafeteria Credits</label>
-              </div>
-              <div class="card-text">
-                &nbsp&nbsp&nbsp You have 0.0 credits remaining.
-              </div>
+    <div class="container"><!--Cards-->
+      <div class="card-deck" id="card-deck">
+        <div class="card card-bg" id="card1">
+          <a href="submenu.html?type=south-indian">
+            <div class="card-body">
+             <div class="card-title">South Indian</div>
             </div>
-            <div class="card" style="border:none">
-              <div class="card-title">
-                <input type="radio" name="option" value="paypal" id="paypal">
-                <label for="paypal">Paypal</label>
-              </div>
-              <div class="card-text">
-                &nbsp&nbsp&nbsp You will be redirected to the paypal interface.
-              </div>
+          </a>
+        </div>
+        <div class="card card-bg">
+          <a href="submenu.html?type=north-indian">
+            <div class="card-body">
+              <div class="card-title">North Indian</div>
             </div>
-          </div>
-          <div class="d-flex justify-content-around">
-            <input class="login-btn" type="submit" style="width: 100px; margin-top: 20px;" value="Pay">
-          </div>
-        </form>
+          </a>
+        </div>
+        <div class="card card-bg">
+          <a href="submenu.html?type=rolls">
+            <div class="card-body">
+              <div class="card-title">Rolls</div>
+            </div>
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="container d-flex justify-content-around" style="margin-top: 50px;"><!--Buttons-->
-        <a href="menu.html" class="nav-btn">Back To Menu</a>
+      <div class="card-deck" id="card-deck2">
+        <div class="card card-bg">
+          <a href="submenu.html?type=type4">
+            <div class="card-body">
+             <div class="card-title">Type 4</div>
+            </div>
+          </a>
+        </div>
+        <div class="card card-bg">
+          <a href="submenu.html?type=type5">
+            <div class="card-body">
+              <div class="card-title">Type 5</div>
+            </div>
+          </a>
+        </div>
+        <div class="card card-bg">
+          <a href="submenu.html?type=type6">
+            <div class="card-body">
+              <div class="card-title">Type 6</div>
+            </div>
+          </a>
+        </div>
+      </div>
     </div>
   </main>
 
