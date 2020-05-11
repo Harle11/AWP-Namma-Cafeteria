@@ -1,6 +1,6 @@
 const mongoose=require('mongoose');
 
-var usersSchema=new mongoose.Schema({
+var userSchema=new mongoose.Schema({
     eid:{
         type: String    
     },
@@ -15,4 +15,4 @@ var usersSchema=new mongoose.Schema({
     }
 });
 
-mongoose.model('users',usersSchema);
+mongoose.model('users',userSchema);
