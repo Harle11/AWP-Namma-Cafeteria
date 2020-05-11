@@ -11,7 +11,7 @@ var usersSchema=new mongoose.Schema({
         type:String
     },
     quick_orders:{
-        type:String
+        type:Array
     }
 });
 
