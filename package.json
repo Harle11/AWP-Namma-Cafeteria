@@ -1,25 +1,27 @@
 {
-  "name": "AWP-Namma-Cafeteria",
+  "name": "awp-namma-cafeteria",
   "version": "1.0.0",
-  "description": "This is a sample website",
-  "main": "index.html",
+  "description": "HTML CSS front-end, Node.js for server functions and Mongodb for backend.",
+  "main": "server.js",
   "scripts": {
-    "watch": "nodemon ./start.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harle11/AWP-Namma-Cafeteria.git"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "lite-server": "^2.3.0",
-    "node": "^13.9.0",
-    "nodemon": "^2.0.3"
+  "bugs": {
+    "url": "https://github.com/Harle11/AWP-Namma-Cafeteria/issues"
   },
+  "homepage": "https://github.com/Harle11/AWP-Namma-Cafeteria#readme",
   "dependencies": {
-    "bootstrap": "^4.0.0",
-    "bootstrap-social": "^5.1.1",
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.2",
     "express": "^4.17.1",
-    "font-awesome": "^4.7.0",
-    "jquery": "^3.3.1",
-    "mongoose": "^5.9.12",
-    "popper.js": "^1.12.9"
+    "express-handlebars": "^4.0.4",
+    "mongoose": "^5.9.13",
+    "nodemon": "^2.0.3"
   }
 }

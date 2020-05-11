@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Orders - Namma Cafeteria</title>
+  <meta name="description" content="College Cafeteria Ordering App">
+  <meta name="keywords" content="Namma Cafeteria, BMSCE Cafeteria">
+
+  <!--link href="img/favicon.jpg" rel="icon"-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div id="mySidenav" class="sidenav">
+      <div class="top">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fa fa-times" aria-hidden="true"></i></a>
+        <a href="/userdetails">User Details and Balance</a>
+        <a href="/quickorders">Quick Orders</a>
+        <a href="/orderhistory">Order History</a>
+        <a href="/liveorders" class="isactive">Live Orders</a>
+      </div>
+      <div class="bottom">
+        <a href="/help">Help?</a>
+        <a href="/contact">Contact Us</a>
+      </div>
+    </div>
+    <div style="margin:0px 40px">
+      <div id="logo">
+        <div class="pull-left">
+          <span onclick="openNav()"><i class="fa fa-bars" aria-hidden="true"></i></span>
+        </div>
+        <a href="/">Namma Cafeteria</a>
+        <div class="pull-right">
+          <a href="/"><i class="fa fa-home" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+    <div class="container"><!--Cart-->
+      <div class="cartbox">
+        <h1 style="text-align: center; color:#FFB03B; font-family: Satisfy, sans-serif;">Live Orders</h1>
+        <h3 style="text-align: center; display: none;">You don't have any live orders</h3>
+        <table id="cart-table">
+          <thead>
+            <tr>
+              <th>Item Name</th>
+              <th valign="right">Price</th>
+              <th valign="right">Time left to cancel</th>
+              <th valing="right"> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Item name 1</td>
+              <td>123</td>
+              <td>5:00</td>
+              <td><a href="#">Cancel Order</a></td>
+            </tr>
+            <tr>
+              <td>Item name 2</td>
+              <td>50</td>
+              <td>5:00</td>
+              <td><a href="#">Cancel Order</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="container d-flex justify-content-around" style="margin-top: 30px;"><!--Buttons-->
+        <a href="/menu" class="nav-btn">Back To Menu</a>
+    </div>
+  </main>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>
