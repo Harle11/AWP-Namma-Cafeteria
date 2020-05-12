@@ -1,0 +1,37 @@
+<main>
+  <div class="reg-container">
+      <div class="card card-2">
+          <div class="card-heading"></div>
+          <div class="card-body">
+              <a href="/"> <h2 class="title">Namma Cafeteria</h2></a>
+              <form method="POST" action="/register" autocomplete="off">
+                <% if (locals.message != null) { %>
+                  <div class="alert alert-danger"><%= message %> </div>  
+                <% } %>
+                  <div class="input-group">
+                      <input class="input--style-1" type="text" placeholder="Name" name="name" value="<%= user.name %>" required>
+                  </div>
+                  <div class="input-group">
+                      <input class="input--style-1" type="email" placeholder="Email id" name="email" value="<%= user.eid %>" required>
+                  </div>
+                  <div class="input-group">
+                      <input class="input--style-2" type="password" placeholder="Password" id="pass" name="pass" value="<%= user.pwd %>" oninput='check();' required>
+                      <div class="muted">
+                        <span id="firstpass" style="font-size: smaller"></span>
+                      </div>
+                  </div>
+                  <div class="input-group">
+                      <input class="input--style-2" type="password" placeholder="Confirm Password" id="conpass" name="conpass" oninput='check();' required>
+                      <div class="muted">
+                        <span id="confirmpass" style="font-size: smaller;"></span>
+                      </div>
+                  </div>
+                  <div class="d-flex justify-content-around">
+                      <button class="login-btn" id="submit" type="submit">Register</button>
+                  </div><br>
+                  <p>Already have an account? Login <a href="/">Here</a>.</p>
+              </form>
+          </div>
+      </div>
+  </div>
+</main>

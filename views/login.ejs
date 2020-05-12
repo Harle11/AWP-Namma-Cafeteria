@@ -1,0 +1,28 @@
+<main>
+  <div class="login-container">
+    <div class="card card-2">
+      <div class="card-heading"></div>
+        <div class="card-body">
+          <a href="/"><h2 class="title">Namma Cafeteria</h2></a>
+          <form method="POST" action="/" autocomplete="off"> 
+            <% if (locals.message != null && locals.messType == 'reg') { %>
+              <div class="alert alert-info"><%= message %> </div>  
+            <% } else if (locals.message != null) { %>
+              <div class="alert alert-danger"><%= message %> </div>
+            <% } %> 
+            <div class="input-group">
+              <input class="input--style-2" type="text" placeholder="User Email" name="name" required>
+            </div>
+            <div class="input-group">
+              <input class="input--style-2" type="password" placeholder="Password" name="pass" required>
+            </div>
+            <div class="d-flex justify-content-around">
+              <button class="login-btn" id="submit" type="submit">Login</button>
+            </div><br>
+             <p>Don't have an account? Register <a href="/register">Here</a>.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

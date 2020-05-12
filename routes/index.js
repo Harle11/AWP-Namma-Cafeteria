@@ -1,62 +1,172 @@
-const express=require('express');
-var router=express.Router();
+const express = require('express')
+const router = express.Router()
+const User = require('../models/user')
 
-router.use(express.static('public'));
-
-router.get('/index',(req, res) => {
-   res.render('index.ejs');
+//Login
+router.get('/', (req, res) => {
+  if(req.query.registration != null && req.query.registration=='success'){
+    res.render('login', {
+      pageType:'login',
+      user: new User(),
+      message: 'Successfully registered',
+      messType: 'reg'
+    })
+  }
+  res.render('login', {
+    pageType:'login',
+    user: new User()
+  })
 })
 
-router.get('/Registration',(req, res) => {
-   res.render('Registration.ejs');
+//Validate Login
+router.post('/', async (req, res) =>{
+  let user = new User({
+    eid: req.body.name,
+    pwd: req.body.pass
+  })
+  try {
+    let loguser = await User.findOne({eid:user.eid})
+    if (loguser == null) {
+      res.render('login', {
+        pageType:'login',
+        user: new User(),
+        message: 'No such user exists'
+      })
+    }
+    else if (loguser.pwd == user.pwd){
+      res.redirect('/home?user='+loguser._id)
+    } else {
+      res.render('login', {
+        pageType:'login',
+        user: new User(),
+        message: 'Login Credentials do not match'
+      })
+    }
+  } catch {
+    res.redirect('/', {
+      pageType:'login',
+      user: new User(), 
+      message: 'Error logging in'
+    })
+  }
 })
 
-router.get('/',(req, res) => {
-    res.render('home.ejs');
+//Registrations
+router.get('/register', (req, res) => {
+  res.render('register', {
+    pageType:'login',
+    user: new User()
+  })
 })
 
-router.get('/userdetails',(req, res) => {
-    res.render('userdetails.ejs');
+//Register the user
+router.post('/register', async (req, res) => {
+  let user = new User({
+    name: req.body.name,
+    eid: req.body.email,
+    pwd: req.body.pass
+  })
+  if(req.body.pass != req.body.conpass){
+    res.render('register', {
+      pageType:'login',
+      user: user, 
+      message: 'Passwords do not match'
+    })
+  } else {
+  try {
+    const newUser = await user.save()
+    res.redirect('/?registration=success')
+  } catch {
+    res.render('register', {
+      pageType:'login',
+      user: user, 
+      errorMessage: 'Error creating User'
+    })
+  }}
 })
 
-router.get('/quickorders',(req, res) => {
-    res.render('quickorders.ejs');
+//Home
+router.get('/home', (req, res) => {
+  res.render('home', {
+    pageType:'home'
+  })
 })
 
-router.get('/cart',(req, res) => {
-    res.render('cart.ejs');
+//User Details
+router.get('/userdetails', (req, res) => {
+  res.render('userdetails', {
+    pageType: 'userdetails'
+  })
 })
 
-router.get('/contact',(req, res) => {
-    res.render('contact.ejs');
+//Menu
+router.get('/menu', (req, res) => {
+  res.render('menu', {
+    pageType: 'menu'
+  })
 })
 
-router.get('/help',(req, res) => {
-    res.render('help.ejs');
+//Quick Orders
+router.get('/quickorders', (req, res) => {
+  res.render('quickorders', {
+    pageType: 'quickorders'
+  })
 })
 
-router.get('/liveorders',(req, res) => {
-    res.render('liveorders.ejs');
+//Search Results
+router.get('/search', (req, res) => {
+  res.render('search', {
+    pageType: 'search'
+  })
 })
 
-router.get('/menu',(req, res) => {
-    res.render('menu.ejs');
+//Cart
+router.get('/cart', (req, res) => {
+  res.render('cart', {
+    pageType: 'cart'
+  })
 })
 
-router.get('/orderhistory',(req, res) => {
-    res.render('orderhistory.ejs');
+//Order History
+router.get('/orderhistory', (req, res) => {
+  res.render('orderhistory', {
+    pageType: 'orderhistory'
+  })
 })
 
-router.get('/payments',(req, res) => {
-    res.render('payments.ejs');
+//Live Orders
+router.get('/liveorders', (req, res) => {
+  res.render('liveorders', {
+    pageType: 'liveorders'
+  })
 })
 
-router.get('/searchresult',(req, res) => {
-    res.render('searchresult.ejs');
+//Help
+router.get('/help', (req, res) => {
+  res.render('help', {
+    pageType: 'help'
+  })
 })
 
-router.get('/submenu',(req, res) => {
-    res.render('submenu.ejs');
+//Contact Us
+router.get('/contact', (req, res) => {
+  res.render('contact', {
+    pageType: 'contact'
+  })
 })
 
-module.exports= router;
+//Payments
+router.get('/payments', (req, res) => {
+  res.render('payments', {
+    pageType: 'payments'
+  })
+})
+
+//Submenu
+router.get('/submenu', (req, res) => {
+  res.render('submenu', {
+    pageType: 'submenu'
+  })
+})
+
+module.exports = router

@@ -1,91 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Namma Cafeteria</title>
-  <meta name="description" content="College Cafeteria Ordering App">
-  <meta name="keywords" content="Namma Cafeteria, BMSCE Cafeteria">
-
-  <!--link href="img/favicon.jpg" rel="icon"-->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Satisfy|Bree+Serif|Candal|PT+Sans">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
-</head>
-
-<body>
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div id="mySidenav" class="sidenav">
-      <div class="top">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fa fa-times" aria-hidden="true"></i></a>
-        <a href="/userdetails">User Details and Balance</a>
-        <a href="/quickorders">Quick Orders</a>
-        <a href="/orderhistory">Order History</a>
-        <a href="/liveorders">Live Orders</a>
-      </div>
-      <div class="bottom">
-        <a href="/help">Help?</a>
-        <a href="/contact">Contact Us</a>
-      </div>
+<div class="container"><!--Cards-->
+  <div class="card-deck" id="card-deck">
+    <div class="card card-bg" id="card1">
+      <a href="/userdetails">
+        <div class="card-body">
+         <div class="card-title">View User Profile</div>
+          <div class="card-text">View your profile as well as your current credit balance</div>
+        </div>
+      </a>
     </div>
-    <div style="margin:0px 40px">
-      <div id="logo">
-        <div class="pull-left">
-          <span onclick="openNav()"><i class="fa fa-bars" aria-hidden="true"></i></span>
+    <div class="card card-bg">
+      <a href="/menu">
+        <div class="card-body">
+          <div class="card-title">View Full Menu</div>
+          <div class="card-text">Contains the entire menu</div>
         </div>
-        <a href="/">Namma Cafeteria</a>
-        <div class="pull-right">
-          <a href="/index" style="font-family:sans-serif; font-size:25px; font-weight:bold;">Login</a>
-          <a href="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-        </div>
-      </div>
+      </a>
     </div>
-  </header><!-- End Header -->
-
-  <main id="main">
-    <div class="container"><!--Cards-->
-      <div class="card-deck" id="card-deck">
-        <div class="card card-bg" id="card1">
-          <a href="/userdetails">
-            <div class="card-body">
-             <div class="card-title">View User Profile</div>
-              <div class="card-text">View your profile as well as your current credit balance</div>
-            </div>
-          </a>
+    <div class="card card-bg">
+      <a href="/quickorders">
+        <div class="card-body">
+          <div class="card-title">View Quick Orders</div>
+          <div class="card-text">Order quickly with your quick orders</div>
         </div>
-        <div class="card card-bg">
-          <a href="/menu">
-            <div class="card-body">
-              <div class="card-title">View Full Menu</div>
-              <div class="card-text">Contains the entire menu</div>
-            </div>
-          </a>
-        </div>
-        <div class="card card-bg">
-          <a href="/quickorders">
-            <div class="card-body">
-              <div class="card-title">View Quick Orders</div>
-              <div class="card-text">Order quickly with your quick orders</div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="card card-search" id="cardSearch">
-        <form action="/searchresult" method="GET">
-          <div class="card-title">Search for a dish</div>
-          <input class="rounded" type="text" name="dishname" placeholder="Dish Name" required>
-          <input  class="rounded" type="submit" value="Search">
-        </form>
-      </div>
+      </a>
     </div>
-  </main>
-
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/main.js"></script>
-
-</body>
-
-</html>
+  </div>
+  <div class="card card-search" id="cardSearch">
+    <form action="/search" method="GET">
+      <div class="card-title">Search for a dish</div>
+      <input class="rounded" type="text" name="dishname" placeholder="Dish Name" required>
+      <input  class="rounded" type="submit" value="Search">
+    </form>
+  </div>
+</div>
