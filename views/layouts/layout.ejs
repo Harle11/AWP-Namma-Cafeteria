@@ -52,10 +52,13 @@
         <div class="pull-right">
           <a href="/cart" <% if (pageType=='cart' || pageType=='payments') {%>
             style="display:none"
-          <%} %>><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+          <%} %>><i class="fa fa-shopping-cart" aria-hidden="true" title="Cart"></i></a>
           <a href="/home" <% if (pageType=='home' || pageType=='payments') {%>
             style="display:none"
-          <%} %>><i class="fa fa-home" aria-hidden="true"></i></a>
+          <%} %>><i class="fa fa-home" aria-hidden="true" title="Home"></i></a>
+          <a href="/logout"<% if (pageType=='payments') {%>
+            style="display:none"
+          <%} %>><i class="fa fa-sign-out" aria-hidden="true" title="Logout"></i></a>
         </div>
       </div>
     </div>

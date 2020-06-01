@@ -2,30 +2,30 @@
   <div class="container"><!--Cart-->
     <div class="cartbox">
       <h1 style="text-align: center; color:#FFB03B; font-family: Satisfy, sans-serif;">Quick Orders</h1>
-      <table id="cart-table">
-        <thead>
-          <tr>
-            <th>Item Name</th>
-            <th valign="right">Quantity</th>
-            <th valign="right">Price</th>
-            <th valing="right"> Order Again?</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Item name 1</td>
-            <td>1</td>
-            <td>prices</td>
-            <td><a href="#">Re-Order</a></td>
-          </tr>
-          <tr>
-            <td>Item name 2</td>
-            <td>2</td>
-            <td>price</td>
-            <td><a href="#">Re-Order</a></td>
-          </tr>
-        </tbody>
-      </table>
+      <% if (locals.LoadUserFailed) { %>
+        <h5>Unable to get User details right now, try again later.</h5>
+      <% } else if (Uqck_orders){ %>
+        <table id="cart-table">
+          <thead>
+            <tr>
+              <th>Item Name</th>
+              <th valign="right">Price</th>
+              <th valing="right">Order Again?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for( let index = 0; index < Uqck_orders.length; index++ ) { %>
+              <tr>
+                <td><%= Uqck_orders[index] %></td>
+                <td>₹<%= orderprice[index] %> </td>
+                <td><a href="#">Re-Order</a></td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <h6 style="padding: 1% 1% 3% 5%;">You have not set any quick orders</h6>
+      <% } %>
     </div>
   </div>
   <div class="container d-flex justify-content-around" style="margin-top: 30px;"><!--Buttons-->

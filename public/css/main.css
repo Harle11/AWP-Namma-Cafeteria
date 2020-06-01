@@ -150,6 +150,21 @@ button:hover {
     font-size: xx-large;
 }
 
+#menucards .card-bg {
+    height: 250px;
+    background-color: #fff;
+    color: #000;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+#menucards a .card-title {
+    margin: 75px 0px;
+    font-family: "Satisfy", sans-serif;
+    color: #FFB03B;
+    font-size: xx-large;
+}
+
 .card-search {    
     text-align: center;
     padding: 30px 0px;
@@ -215,6 +230,10 @@ button:hover {
     background-color: rgba(0, 0, 0, 0.75);
     color: #FFB03B;
     transition: all 0.3s;
+}
+
+tr:hover {
+    background-color: rgba(255, 176, 59, 0.15);
 }
 
 /*---------- Login/Registrations ----------*/

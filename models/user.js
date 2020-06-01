@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema({
   quick_orders:{
     type: Array,
     default: []
+  },
+  credit:{
+    type: Number,
+    default: 0
   }
 })
 

@@ -1,50 +1,17 @@
 <main id="main">
   <div class="container"><!--Cards-->
-    <div class="card-deck" id="card-deck">
-      <div class="card card-bg" id="card1">
-        <a href="">
-          <div class="card-body">
-           <div class="card-title">South Indian</div>
+    <div class="row" id="menucards">
+      <% for( let i = 0; i < dishTypes.length; i++ ) { %>
+        <div class="col-sm-4">
+          <div class="card card-bg">
+            <a href="/submenu?type=<%= durls[i] %> ">
+              <div class="card-body">
+                <div class="card-title"><%= dishTypes[i] %> </div>
+              </div>
+            </a>
           </div>
-        </a>
-      </div>
-      <div class="card card-bg">
-        <a href="">
-          <div class="card-body">
-            <div class="card-title">North Indian</div>
-          </div>
-        </a>
-      </div>
-      <div class="card card-bg">
-        <a href="">
-          <div class="card-body">
-            <div class="card-title">Rolls</div>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="card-deck" id="card-deck2">
-      <div class="card card-bg">
-        <a href="">
-          <div class="card-body">
-           <div class="card-title">Type 4</div>
-          </div>
-        </a>
-      </div>
-      <div class="card card-bg">
-        <a href="">
-          <div class="card-body">
-            <div class="card-title">Type 5</div>
-          </div>
-        </a>
-      </div>
-      <div class="card card-bg">
-        <a href="">
-          <div class="card-body">
-            <div class="card-title">Type 6</div>
-          </div>
-        </a>
-      </div>
+        </div>
+      <% } %>
     </div>
   </div>
 </main>

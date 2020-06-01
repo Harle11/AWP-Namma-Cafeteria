@@ -2,38 +2,27 @@
   <div class="container"><!--Cart-->
     <div class="cartbox">
       <h1 style="text-align: center; color:#FFB03B; font-family: Satisfy, sans-serif;">Search Results</h1>
-      <h3 style="text-align: center; display: none;">You don't have any live orders</h3>
       <table id="cart-table">
+        <% if (dishes.length>0) { %>
         <thead>
           <tr>
             <th>Item Name</th>
             <th valign="right">Price</th>
-            <th valign="right">Total Price</th>
             <th valing="right"> </th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Item name </td>
-            <td>Price</td>
-            <td>Total Price</td>
-            
-          </tr>
-          <tr>
-            <td>Item name </td>
-            <td>Price</td>
-            <td>Total Price</td>
-      
-      <tr>
-            <td>Item name </td>
-            <td>Price</td>
-            <td>Total Price</td>
-            
-          </tr>
-            
-      
-          </tr>
+            <% dishes.forEach(dish => { %>
+              <tr>
+                <td><%= dish.dish_name %></td>
+                <td>₹<%= dish.price %> </td>
+                <td><a href="#">Order</a></td>
+              </tr>
+            <% }) %>
         </tbody>
+        <% } else { %>
+          <tbody><tr><td>No dish found, try a different search.</td></tr></tbody>
+        <% } %>
       </table>
     </div>
   </div>

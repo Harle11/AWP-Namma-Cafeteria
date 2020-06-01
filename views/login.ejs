@@ -11,7 +11,10 @@
               <div class="alert alert-danger"><%= message %> </div>
             <% } %> 
             <div class="input-group">
-              <input class="input--style-2" type="text" placeholder="User Email" name="name" required>
+              <input type="hidden" name="nurl" value="<% if (locals.npage != null) { %>
+                <%= npage %> 
+                <% } else { %>/home<% } %>">
+              <input class="input--style-2" type="text" placeholder="User Email" name="email" required autofocus>
             </div>
             <div class="input-group">
               <input class="input--style-2" type="password" placeholder="Password" name="pass" required>
