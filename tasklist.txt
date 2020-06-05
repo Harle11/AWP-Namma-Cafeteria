@@ -1,4 +1,3 @@
-Cart
 Ordering and Orderhistory
 Adding to quick orders
 

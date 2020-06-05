@@ -1,45 +1,50 @@
 <main id="main">
   <div class="container"><!--Cart-->
     <div class="cartbox">
-      <h1 style="text-align: center; color:#FFB03B; font-family: Satisfy, sans-serif;">Payment Options</h1>
-      <h4 style="margin-left: 30px; color: #000;">Choose a payment method:</h4>
-      <form class="payments" action="" method="POST">
-        <div class="card-deck">
-          <div class="card" style="border:none">
-            <div class="card-title">
-              <input type="radio" name="option" value="credits" id="credits" checked>
-              <label for="credits">Namma Cafeteria Credits</label>
-            </div>
-            <div class="card-text">
-              &nbsp&nbsp&nbsp You have 0.0 credits remaining.
-            </div>
+      <h1 style="text-align: center; color:#FFB03B; font-family: Satisfy, sans-serif;">Payment Options</h1><br>
+      <h5 style="margin-left: 30px; color: #000;">Amount to be paid: ₹<%= amt %> </h5><br>
+      <h5 style="margin-left: 30px; color: #000;">Choose a payment method:</h5>
+      <div class="card-deck payments">
+        <div class="card" style="border-right: double;margin-right: 0px;">
+          <div class="card-title">
+            <h6>Namma Cafeteria Credits</h6>
           </div>
-          <div class="card" style="border:none">
-            <div class="card-title">
-              <input type="radio" name="option" value="paypal" id="paypal">
-              <label for="paypal">Paypal</label>
-            </div>
-            <div class="card-text">
-              &nbsp&nbsp&nbsp You will be redirected to the paypal interface.
+          <div class="card-text">
+            &nbsp&nbsp&nbsp You have <%= mycredits %>  credits remaining.<br>
+            <div class="namma-credits-div">
+              <form action="/validatepayment" method="POST">
+                <input type="hidden" name="amount" value="<%= amt %>">
+                <% if (amt > mycredits) { %>
+                  <input type="submit" value="Use Credits" class="namma-credits-btn-disabled" title="Insufficient Credits" disabled>
+                <% } else { %>
+                  <input type="submit" value="Use Credits" class="namma-credits-btn">
+                <% } %>
+              </form>
             </div>
           </div>
         </div>
-        <center>
-          <div class="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_EoyEeV63XzNWD9/view" data-text="Pay Now" data-color="#528FF0" data-size="small">
-            <script>
-              (function(){
-                var d=document; var x=!d.getElementById('razorpay-embed-btn-js')
-                if(x){ var s=d.createElement('script'); s.defer=!0;s.id='razorpay-embed-btn-js';
-                s.src='https://cdn.razorpay.com/static/embed_btn/bundle.js';d.body.appendChild(s);} else{var rzp=window['__rzp__'];
-                rzp && rzp.init && rzp.init()}})();
-            </script>
+        <div class="card" style="border-left: double;margin-left: 0px;">
+          <div class="card-title">
+            <h6>UPI, VISA, RuPay</h6>
           </div>
-              
-        </center>
-      </form>
+          <div class="card-text">
+            &nbsp&nbsp&nbsp You will be redirected to the payment gateway page.<br>
+            <div class="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_EoyEeV63XzNWD9/view" data-text="Pay Now" data-color="#528FF0" data-size="small">
+              <script>
+                (function(){
+                  var d=document; var x=!d.getElementById('razorpay-embed-btn-js')
+                  if(x){ var s=d.createElement('script'); s.defer=!0;s.id='razorpay-embed-btn-js';
+                  s.src='https://cdn.razorpay.com/static/embed_btn/bundle.js';d.body.appendChild(s);} else{var rzp=window['__rzp__'];
+                  rzp && rzp.init && rzp.init()}})();
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="container d-flex justify-content-around" style="margin-top: 50px;"><!--Buttons-->
       <a href="/menu" class="nav-btn">Back To Menu</a>
+      <a href="/cart" class="nav-btn">Back To Cart</a>
   </div>
 </main>

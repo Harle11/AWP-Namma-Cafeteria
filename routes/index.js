@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 const Cafeteria = require('../models/bmscafeteria')
-const Orders = require('../models/orders')
+const Order = require('../models/orders')
 const bcrypt = require('bcryptjs')
 const { regValidation, loginValidation } = require('../validations')
 
@@ -50,6 +50,10 @@ router.post('/', async (req, res) =>{
     }
     else if (await bcrypt.compare(user.pwd, loguser.pwd)){
       req.session.userId = loguser._id
+      req.session.cart = {
+        items: [],
+        total: 0
+      }
       nextUrl = (req.body.nurl).trim()
       return res.redirect(nextUrl)
     } else {
@@ -269,7 +273,7 @@ router.get('/search', async (req, res) => {
 })
 
 //Cart
-router.get('/cart', (req, res) => {
+router.get('/cart', async (req, res) => {
   if(!req.session.userId){
     return res.render('login', {
       pageType:'login',
@@ -278,9 +282,127 @@ router.get('/cart', (req, res) => {
       message: 'Please Log In to continue'
     })
   }
+  mycart = req.session.cart
+  /*mycart.items.forEach(dish => {
+    dbdish = await (Cafeteria.findOne({dish_name:dish.name}))
+    dish.price = dbdish.price
+  });*/
   return res.render('cart', {
-    pageType: 'cart'
+    pageType: 'cart', 
+    mycart: mycart
   })
+})
+
+//Cart - Add New Item
+router.get('/addtocart', async (req, res) => {
+  if(!req.session.userId){
+    return res.render('login', {
+      pageType:'login',
+      user: new User(),
+      npage: '/cart', 
+      message: 'Please Log In to continue'
+    })
+  }
+  dish_id = req.query.dish_id
+  dish = await Cafeteria.findOne({_id: dish_id})
+  if(dish){
+    req.session.cart.items.push({
+      name:dish.dish_name,
+      price:dish.price
+    })
+    req.session.cart.total += dish.price
+    return res.redirect('/cart')
+  } else {
+    return res.redirect('/menu')
+  }
+})
+
+//Cart - Remove an Item
+router.get('/removefromcart', (req, res) => {
+  if(!req.session.userId){
+    return res.render('login', {
+      pageType:'login',
+      user: new User(),
+      npage: '/cart', 
+      message: 'Please Log In to continue'
+    })
+  }
+  dishindex = req.query.dishindex
+  price = req.session.cart.items[dishindex].price
+  req.session.cart.total -= price
+  req.session.cart.items.splice(dishindex, 1)
+  return res.redirect('/cart')
+})
+
+//Cart - Empty Cart
+router.get('/emptycart', (req, res) => {
+  if(!req.session.userId){
+    return res.render('login', {
+      pageType:'login',
+      user: new User(),
+      npage: '/cart', 
+      message: 'Please Log In to continue'
+    })
+  }
+  req.session.cart = {
+    items: [],
+    total: 0
+  }
+  ispaid = req.query.paid
+  if(ispaid){
+    return res.redirect('/liveorders')
+  }
+  return res.redirect('/cart')
+})
+
+//Payments
+router.get('/payments', (req, res) => {
+  return res.redirect('/')
+})
+router.post('/payments', async (req, res) => {
+  if(!req.session.userId){
+    return res.redirect('/')
+  }
+  amt = req.body.amount
+  const currUser = await User.findOne({_id: req.session.userId})
+  totcredit = currUser.credit
+  return res.render('payments', {
+    pageType: 'payments',
+    mycredits: totcredit,
+    amt: amt
+  })
+})
+
+//Validate Payment
+router.get('/validatepayment', (req, res) => {
+  return res.redirect('/')
+})
+router.post('/validatepayment', async (req, res) => {
+  if(!req.session.userId){
+    return res.redirect('/')
+  }
+  try {
+    amt = req.body.amount
+    const currUser = await User.findOne({_id: req.session.userId})
+    totcredit = currUser.credit
+    if(totcredit >= amt){
+      totcredit -= amt
+      mycart = req.session.cart
+      for (let i = 0; i < mycart.items.length; i++) {
+        var order = new Order({
+          eid: req.session.userId,
+          dish_name: mycart.items[i].name,
+          date: new Date()
+        })
+        var newOrder = await order.save()
+      }
+      currUser.credit = totcredit
+      var saveuser = currUser.save()
+      return res.redirect('/emptycart?paid=true')
+    }
+  } catch {
+    return res.redirect('/cart?someerror=true')
+  }
 })
 
 //Order History
@@ -340,31 +462,6 @@ router.get('/contact', (req, res) => {
   }
   return res.render('contact', {
     pageType: 'contact'
-  })
-})
-
-//Payments
-router.get('/payments', (req, res) => {
-  if(!req.session.userId){
-    return res.redirect('/')
-  }
-  return res.render('payments', {
-    pageType: 'payments'
-  })
-})
-
-//Submenu
-router.get('/submenu', (req, res) => {
-  if(!req.session.userId){
-    return res.render('login', {
-      pageType:'login',
-      user: new User(),
-      npage: '/submenu', 
-      message: 'Please Log In to continue'
-    })
-  }
-  return res.render('submenu', {
-    pageType: 'submenu'
   })
 })
 

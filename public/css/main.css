@@ -371,6 +371,37 @@ tr:hover {
     border-radius: 3px;
 }
 
+/*------Payment Page------*/
+.namma-credits-div {
+    margin: 8px;
+    padding:10px;
+}
+
+.namma-credits-btn {
+    line-height: 40px;
+    display: inline-block;
+    padding: 0 20px;
+    cursor: pointer;
+    background-color: #528FF0;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    border-radius: 3px;
+}
+
+.namma-credits-btn-disabled {
+    line-height: 40px;
+    display: inline-block;
+    padding: 0 20px;
+    background-color: rgb(98, 99, 100);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    border-radius: 3px;
+}
+
 /*------Contact Page------*/
 .reg-container1{
     margin-top: 100px;
@@ -399,24 +430,24 @@ tr:hover {
 	position:fixed;
 }
 
-    .form-label-left{
-        width:150px;
+.form-label-left{
+    width:150px;
 
-    }
-    .form-line{
-        padding-top:12px;
-        padding-bottom:12px;
-    }
-    .form-label-right{
-        width:150px;
-    }
-    .form-all{
-        width:550px;
-        color:Black !important;
-        font-size:14px;
-    }
-    .form-radio-item label, .form-checkbox-item label, .form-grading-label, .form-header{ color: Black;
-    }
+}
+.form-line{
+    padding-top:12px;
+    padding-bottom:12px;
+}
+.form-label-right{
+    width:150px;
+}
+.form-all{
+    width:550px;
+    color:Black !important;
+    font-size:14px;
+}
+.form-radio-item label, .form-checkbox-item label, .form-grading-label, .form-header{ color: Black;
+}
 
 /*------------------------------------------------
                 Responsive

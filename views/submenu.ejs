@@ -15,7 +15,7 @@
             <tr>
               <td><%= dishes[i].dish_name %></td>
               <td>₹<%= dishes[i].price %> </td>
-              <td><a href="#">Order</a></td>
+              <td><a href="/addtocart?dish_id=<%= dishes[i]._id %>">Order</a></td>
             </tr>
           <% } %>
         </tbody>

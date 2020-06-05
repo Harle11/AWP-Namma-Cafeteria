@@ -12,10 +12,6 @@ const orderSchema = new mongoose.Schema({
   date:{
     type: Date,
     required: true
-  },
-  quantity:{
-    type: Number,
-    default: 1
   }
 })
 
