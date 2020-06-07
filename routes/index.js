@@ -231,6 +231,7 @@ router.get('/quickorders', async (req, res) => {
   const currUser = await User.findOne({_id: req.session.userId})
   let qckOrders = currUser.quick_orders
   let orderprice = []
+  let dish_ids = []
   if(qckOrders.length == 0){
     qckOrders = null
   } else { 
@@ -238,13 +239,15 @@ router.get('/quickorders', async (req, res) => {
       const ele = qckOrders[i];
       dish = await Cafeteria.findOne({dish_name: ele})
       orderprice.push(dish.price)
+      dish_ids.push(dish._id)
     }
   }
   if (currUser){
     return res.render('quickorders', {
       pageType: 'quickorders',
       Uqck_orders: qckOrders,
-      orderprice: orderprice
+      orderprice: orderprice, 
+      dish_ids: dish_ids
     })
   } else {
     return res.render('quickorders', {
@@ -252,6 +255,61 @@ router.get('/quickorders', async (req, res) => {
       LoadUserFailed: true
     })
   }
+})
+
+//Quick Orders - Add
+router.get('/addtofavs', async (req, res) => {
+  if(!req.session.userId){
+    return res.render('login', {
+      pageType:'login',
+      user: new User(),
+      npage: '/liveorders', 
+      message: 'Please Log In to continue'
+    })
+  }
+  currUser = await User.findOne({_id:req.session.userId})
+  favs = currUser.quick_orders
+  dish = req.query.dishid
+  if(dish){
+    dbdish = await Cafeteria.findOne({_id:dish})
+    if(dbdish){
+      if(!(favs.includes(dbdish.dish_name))){
+        currUser.quick_orders.push(dbdish.dish_name)
+        newUser = await currUser.save()
+      }
+    }
+  }
+  return res.redirect('/orderhistory')
+})
+
+//Quick Orders - Remove
+router.get('/removefav', async (req, res) => {
+  if(!req.session.userId){
+    return res.render('login', {
+      pageType:'login',
+      user: new User(),
+      npage: '/liveorders', 
+      message: 'Please Log In to continue'
+    })
+  }
+  currUser = await User.findOne({_id:req.session.userId})
+  favs = currUser.quick_orders
+  dish = req.query.dishid
+  if(dish){
+    dbdish = await Cafeteria.findOne({_id:dish})
+    if(dbdish){
+      if(favs.includes(dbdish.dish_name)){
+        index = currUser.quick_orders.indexOf(dbdish.dish_name)
+        currUser.quick_orders.splice(index, 1)
+        newUser = await currUser.save()
+      }
+    }
+  }
+  frm = req.query.frm
+  if(frm=="qck"){
+    return res.redirect('/quickorders')
+  }
+  return res.redirect('/orderhistory')
 })
 
 //Search Results
@@ -307,6 +365,7 @@ router.get('/addtocart', async (req, res) => {
   dish = await Cafeteria.findOne({_id: dish_id})
   if(dish){
     req.session.cart.items.push({
+      dishid:dish_id,
       name:dish.dish_name,
       price:dish.price
     })
@@ -392,6 +451,7 @@ router.post('/validatepayment', async (req, res) => {
         var order = new Order({
           eid: req.session.userId,
           dish_name: mycart.items[i].name,
+          dish_id: mycart.items[i].dishid,
           date: new Date()
         })
         var newOrder = await order.save()
@@ -406,7 +466,7 @@ router.post('/validatepayment', async (req, res) => {
 })
 
 //Order History
-router.get('/orderhistory', (req, res) => {
+router.get('/orderhistory', async (req, res) => {
   if(!req.session.userId){
     return res.render('login', {
       pageType:'login',
@@ -415,8 +475,22 @@ router.get('/orderhistory', (req, res) => {
       message: 'Please Log In to continue'
     })
   }
+  const currUser = await User.findOne({_id: req.session.userId})
+  favs = currUser.quick_orders
+  const myorders = await Order.find({eid:currUser._id})
+  emptyhistory = true
+  if(myorders.length > 0){
+    emptyhistory = false
+    myorders.forEach(order => {
+      if(favs.includes(order.dish_name)){
+        order["isfav"] = true
+      }
+    });
+  }
   return res.render('orderhistory', {
-    pageType: 'orderhistory'
+    pageType: 'orderhistory',
+    myorders: myorders,
+    isempty: emptyhistory
   })
 })
 

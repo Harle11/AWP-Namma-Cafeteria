@@ -1,6 +1,6 @@
 <main id="main">
   <div class="container"><!--Cart-->
-    <div class="cartbox">
+    <div class="cartbox"  style="padding-left: 5%;padding-right: 5%;">
       <h1 style="text-align: center; color:#FFB03B; font-family: Satisfy, sans-serif;"><%= dtype %> </h1>
       <table id="cart-table">
         <thead>
@@ -14,8 +14,8 @@
           <% for( let i = 0; i < dishes.length; i++ ) { %>
             <tr>
               <td><%= dishes[i].dish_name %></td>
-              <td>₹<%= dishes[i].price %> </td>
-              <td><a href="/addtocart?dish_id=<%= dishes[i]._id %>">Order</a></td>
+              <td>₹<%= dishes[i].price %></td>
+              <td><a href="/addtocart?dish_id=<%= dishes[i]._id %>"><i class="fa fa-cart-plus" style="color: #FFB03B; font-size:xx-large;" title="Add to cart"></i></a></td>
             </tr>
           <% } %>
         </tbody>

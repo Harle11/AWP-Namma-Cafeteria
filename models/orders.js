@@ -9,6 +9,10 @@ const orderSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  dish_id:{
+    type: String,
+    required: true
+  },
   date:{
     type: Date,
     required: true

@@ -1,6 +1,6 @@
 <main id="main">
   <div class="container"><!--Cart-->
-    <div class="cartbox">
+    <div class="cartbox"  style="padding-left: 5%;padding-right: 5%;">
       <h1 style="text-align: center; color:#FFB03B; font-family: Satisfy, sans-serif;">Quick Orders</h1>
       <% if (locals.LoadUserFailed) { %>
         <h5>Unable to get User details right now, try again later.</h5>
@@ -10,7 +10,8 @@
             <tr>
               <th>Item Name</th>
               <th valign="right">Price</th>
-              <th valing="right">Order Again?</th>
+              <th valign="right"></th>
+              <th valign="right"></th>
             </tr>
           </thead>
           <tbody>
@@ -18,7 +19,8 @@
               <tr>
                 <td><%= Uqck_orders[index] %></td>
                 <td>₹<%= orderprice[index] %> </td>
-                <td><a href="#">Re-Order</a></td>
+                <td><a href="removefav?dishid=<%= dish_ids[index] %>&frm=qck"><i class="fa fa-remove" style="color: #FFB03B; font-size:xx-large;" title="Remove"></i></a></td>
+                <td><a href="/addtocart?dish_id=<%= dish_ids[index] %>"><i class="fa fa-cart-plus" style="color: #FFB03B; font-size:xx-large;" title="Add to cart"></i></a></td>
               </tr>
             <% } %>
           </tbody>

@@ -16,7 +16,7 @@
               <tr>
                 <td><%= dish.dish_name %></td>
                 <td>₹<%= dish.price %> </td>
-                <td><a href="#">Order</a></td>
+                <td><a href="/addtocart?dish_id=<%= dish._id %>"><i class="fa fa-cart-plus" style="color: #FFB03B; font-size:xx-large;" title="Add to cart"></i></a></td>
               </tr>
             <% }) %>
         </tbody>
