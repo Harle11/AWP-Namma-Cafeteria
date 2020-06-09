@@ -499,8 +499,8 @@ tr:hover {
     color: #fff;
     font-size: 15px;
     text-align: center;
-    height:70px;
-    padding: 25px 0;
+    height:62px;
+    padding: 16px 0;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -508,10 +508,53 @@ tr:hover {
   }
 
   #footer .copyright {
-    margin: 0 0 5px 0;
+    margin: 0 0 0px 0;
   }
   
   #footer .credits {
     font-size: 13.5px;
     color: #FFB03B;
+  }
+
+  /*--Help Page--*/
+
+  .accordion {
+    background-color:white;
+    color:black;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    font-family:sans-serif;
+    text-align: left;
+    outline: none;
+    font-size: 19px;
+    transition: 0.4s;
+  }
+  
+  .active, .accordion:hover {
+    background-color:white;
+    color: #FFB03B;
+  }
+  
+  .accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+  }
+  
+  .active:after {
+    content: "\2212";
+  }
+  
+  .panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    font-family:sans-serif;
+    font-size: 15px;
+    transition: max-height 0.2s ease-out;
   }
