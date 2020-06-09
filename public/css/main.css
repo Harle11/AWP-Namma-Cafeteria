@@ -492,3 +492,26 @@ tr:hover {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
+
+/*-- Footer--*/
+#footer {
+    background-color:rgba(0, 0, 0, 0.75);
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    height:70px;
+    padding: 25px 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+
+  #footer .copyright {
+    margin: 0 0 5px 0;
+  }
+  
+  #footer .credits {
+    font-size: 13.5px;
+    color: #FFB03B;
+  }
