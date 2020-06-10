@@ -558,3 +558,12 @@ tr:hover {
     font-size: 15px;
     transition: max-height 0.2s ease-out;
   }
+  /*---End---*/
+
+  /*---image in home page---*/
+
+/*--#card1{
+    background-image: url(../img/user.jpg);
+    background-size: cover;
+    overflow-x: hidden;
+}*/
