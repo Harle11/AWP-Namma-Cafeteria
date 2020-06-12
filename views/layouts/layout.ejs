@@ -18,6 +18,19 @@
   <header id="header" <% if (pageType=='login') {%>
     style="display:none"
   <%} %>>
+  <% if (pageType=="managerhome" || pageType=="managermenu" || pageType=="managerorders" || pageType=="managerliveorders") { %>
+    <div style="margin:0px 40px">
+      <div id="mlogo">
+        <a href="/manager/managerhome">Namma Cafeteria</a>
+        <div class="pull-right">
+          <a href="/home" <% if (pageType=='managerhome') {%>
+            style="display:none"
+          <%} %>><i class="fa fa-home" aria-hidden="true" title="Home"></i></a>
+          <a href="/logout"><i class="fa fa-sign-out" aria-hidden="true" title="Logout"></i></a>
+        </div>
+      </div>
+    </div>
+  <% } else { %>
     <div id="mySidenav" class="sidenav">
       <div class="top">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fa fa-times" aria-hidden="true"></i></a>
@@ -62,20 +75,26 @@
         </div>
       </div>
     </div>
+    <% } %>
   </header><!-- End Header -->
    <%- body %>
-    <!--Footer start-->
-    <footer id="footer">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Delicious</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        Designed by BootstrapMade & JotForm
-      </div>
-    </footer>
-    <!-- End Footer -->
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/main.js"></script>
+  <!--Footer start-->
+  <footer id="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>Delicious</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      Designed by BootstrapMade & JotForm
+    </div>
+  </footer>
+  <!-- End Footer -->
+  <% if (pageType=="managerhome" || pageType=="managermenu" || pageType=="managerorders" || pageType=="managerliveorders") { %>
+    <script src="http://localhost:3000/js/bootstrap.bundle.min.js"></script>
+    <script src="http://localhost:3000/js/main.js"></script>
+  <% } else { %>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  <% } %>
   <script>
     if(document.documentElement.scrollHeight>window.innerHeight){
     document.getElementById('footer').style.position = 'relative';

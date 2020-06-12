@@ -57,14 +57,17 @@ button:hover {
     z-index: 997;
 }
 
-#header #logo {
+#header #logo,
+#header #mlogo {
     text-align: center;
 }
 
+#header #mlogo i,
 #header #logo i {
     font-size: 32px;
 }
 
+#header #mlogo a,
 #header #logo a {
     font-size: 32px;
     line-height: 1;

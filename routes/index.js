@@ -50,6 +50,10 @@ router.post('/', async (req, res) =>{
     }
     else if (await bcrypt.compare(user.pwd, loguser.pwd)){
       req.session.userId = loguser._id
+      if (loguser.eid=="cafeteriamanager@bmsce.ac.in"){
+        req.session.usermanager = true
+        return res.redirect('/manager/managerhome')
+      }
       req.session.cart = {
         items: [],
         total: 0
