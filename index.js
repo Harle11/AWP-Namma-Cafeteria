@@ -20,7 +20,7 @@ app.use(session({
 }))
 
 const mongoose = require('mongoose')
-mongoose.connect("mongodb://localhost/nammaDB", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://user:LhSxNtK9Tx9NWGxf@cluster0-exted.gcp.mongodb.net/nammaDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
 db.on('error', error => console.error(error))
 db.once('open', () => console.error('Connected to Mongoose'))
