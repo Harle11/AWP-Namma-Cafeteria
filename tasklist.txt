@@ -1,12 +1,16 @@
-LiveOrders
-
-None Checks - No documents matching request
+Footer Overlap fix
 
 Help page - FAQ section
+  change cartbox class
+  split view Guide & FAQ
 Contact Us 
 
-Footer if needed
 Images
 Style the ordering links
 
+Reset Password
+
 Responsive
+
+Cafeteria Side Process
+LiveOrders - Pickup

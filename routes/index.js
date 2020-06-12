@@ -495,7 +495,7 @@ router.get('/orderhistory', async (req, res) => {
 })
 
 //Live Orders
-router.get('/liveorders', (req, res) => {
+router.get('/liveorders', async (req, res) => {
   if(!req.session.userId){
     return res.render('login', {
       pageType:'login',
@@ -504,9 +504,62 @@ router.get('/liveorders', (req, res) => {
       message: 'Please Log In to continue'
     })
   }
+  msg = null
+  canceled = req.query.cancellation
+  canceltimeout = req.query.canceltimeout
+  invalidID = req.query.invalidid
+  if (canceled && canceled=="success"){
+    msg = "Successfully canceled the order, credits have been transfered to your account."
+  } else if (canceltimeout && canceltimeout=="true"){
+    msg = "Unable to cancel order as time to cancel has expired."
+  } else if (invalidID && invalidID=="true") {
+    msg = "Invalid Order ID, cancellation failed."
+  }
+  const myorders = await Order.find({eid:req.session.userId})
+  emptyhistory = true
+  if (myorders.length>0){
+    emptyhistory = false
+    myorders.forEach(order => {
+      order["cancel_time"] = new Date(new Date(order.date).getTime()+5*60000)
+      currDate = new Date()
+      if(currDate<order.cancel_time){
+        order["can_cancel"] = true
+      }
+    })
+  }
   return res.render('liveorders', {
-    pageType: 'liveorders'
+    pageType: 'liveorders',
+    myorders: myorders,
+    isempty: emptyhistory,
+    msg: msg
   })
+})
+
+//Live Orders - Cancel an Order
+router.get('/cancelorder', (req, res) => {
+  return res.redirect('/liveorders')
+})
+router.post('/cancelorder', async (req, res) => {
+  if(!req.session.userId){
+    return res.redirect('/')
+  }
+  currUser = await User.findOne({_id:req.session.userId})
+  order = await Order.findOne({_id:req.body.orderid})
+  if(order) {
+    currDate = new Date()
+    cancel_time = new Date(new Date(order.date).getTime()+5*60000)
+    if(currDate<cancel_time){
+      dish = await Cafeteria.findOne({_id:order.dish_id})
+      currUser.credit = currUser.credit + dish.price - 10
+      deleted = await Order.deleteOne({_id:order._id})
+      saveuser = currUser.save()
+      return res.redirect('/liveorders?cancellation=success')
+    } else {
+      return res.redirect('/liveorders?canceltimeout=true')
+    }
+  } else {
+    return res.redirect('/liveorders?invalidid=true')
+  }
 })
 
 //Help
