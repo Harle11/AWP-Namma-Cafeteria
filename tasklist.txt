@@ -1,8 +1,3 @@
-Help page - FAQ section
-  change cartbox class
-  split view Guide & FAQ
-Contact Us 
-
 Images
 
 Reset Password
@@ -11,3 +6,8 @@ Responsive
 
 Cafeteria Side Process
 LiveOrders - Pickup
+
+Help page - FAQ section
+  change cartbox class
+  split view Guide & FAQ
+Contact Us 
