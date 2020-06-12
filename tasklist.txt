@@ -1,12 +1,9 @@
-Footer Overlap fix
-
 Help page - FAQ section
   change cartbox class
   split view Guide & FAQ
 Contact Us 
 
 Images
-Style the ordering links
 
 Reset Password
 
