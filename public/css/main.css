@@ -148,7 +148,7 @@ button:hover {
 
 #card-deck2 a .card-title,
 #card-deck a .card-title {
-    margin: 75px 0px;
+    margin: -8px 0px;
     font-family: "Satisfy", sans-serif;
     color: #FFB03B;
     font-size: xx-large;
@@ -566,8 +566,24 @@ tr:hover {
 
   /*---image in home page---*/
 
-/*--#card1{
+#card1{
     background-image: url(../img/user.jpg);
     background-size: cover;
-    overflow-x: hidden;
-}*/
+    background-position: center;
+    background-position-y: 28px;
+}
+
+#card2{
+    background-image: url(../img/menu.jpg);
+    background-size: cover;
+    background-position: center;
+    background-position-y: 48px;
+}
+
+#card3{
+    background-image: url(../img/quick.jpg);
+    background-size: cover;
+    background-position: center;
+    background-position-y: 0px,18px;
+}
+
