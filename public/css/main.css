@@ -162,12 +162,33 @@ button:hover {
     text-align: center;
 }
 
+#menucards .mcard-bg {
+    height: 250px;
+    background-color: #fff;
+    color: #000;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+#menucards .mcard-bg .card-title {
+    margin: 75px 0px;
+    font-family: "Satisfy", sans-serif;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #FFB03B;
+    font-size: xx-large;
+}
+
 #menucards a .card-title {
     margin: 75px 0px;
     font-family: "Satisfy", sans-serif;
     background-color: rgba(0, 0, 0, 0.75);
     color: #FFB03B;
     font-size: xx-large;
+}
+
+#menucards a .card-text {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
 }
 
 .card-search {    
@@ -610,5 +631,19 @@ tr:hover {
 
 #menusnacks {
     background-image: url(../img/menu/chats.jpg);
+    background-size: cover;
+}
+
+#cardmanagermenu {
+    background-image: url(../img/managermenu.jpg);
+    background-size: cover;
+}
+#cardliveorders {
+    background-image: url(../img/managerorders.jpg);
+    background-size: cover;
+}
+
+#cardallorders {
+    background-image: url(../img/managerallorders.jpg);
     background-size: cover;
 }

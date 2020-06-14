@@ -9,6 +9,9 @@ const { regValidation, loginValidation } = require('../validations')
 //Login
 router.get('/', (req, res) => {
   if(req.session.userId){
+    if (req.session.usermanager){
+      return res.redirect('/manager/managerhome')
+    }
     return res.redirect('/home')
   }
   if(req.query.registration != null && req.query.registration=='success'){
@@ -454,6 +457,7 @@ router.post('/validatepayment', async (req, res) => {
       for (let i = 0; i < mycart.items.length; i++) {
         var order = new Order({
           eid: req.session.userId,
+          user_name: currUser.name,
           dish_name: mycart.items[i].name,
           dish_id: mycart.items[i].dishid,
           date: new Date()
@@ -519,7 +523,7 @@ router.get('/liveorders', async (req, res) => {
   } else if (invalidID && invalidID=="true") {
     msg = "Invalid Order ID, cancellation failed."
   }
-  const myorders = await Order.find({eid:req.session.userId})
+  const myorders = await Order.find({eid:req.session.userId,active:true})
   emptyhistory = true
   if (myorders.length>0){
     emptyhistory = false

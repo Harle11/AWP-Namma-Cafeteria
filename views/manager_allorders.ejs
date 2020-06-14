@@ -1,0 +1,38 @@
+<main id="main">
+  <div class="container">
+    <div class="cartbox" style="padding-left: 5%;padding-right: 5%;">
+      <h1 style="text-align: center; color:#FFB03B; font-family: Satisfy, sans-serif;">All Orders</h1>
+      <% if (isempty) { %>
+        <h4 style="text-align: center">No orders have been placed.</h4>
+      <% } else { %>
+        <table id="cart-table">
+          <thead>
+            <tr>
+              <th>Item Name</th>
+              <th valign="right">Customer</th>
+              <th valign="right">Date & Time</th>
+              <th valign="right">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% all_orders.forEach(order => { %>
+              <tr>
+                <td><%= order.dish_name %></td>
+                <td><%= order.user_name %></td>
+                <td><%= ((order.date).toString()).substring(4,21) %></td>
+                <td><% if (order.active) { %>
+                  Active
+                 <% } else { %>
+                  Completed
+                <% } %></td>
+                </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      <% } %>
+    </div>
+  </div>
+  <div class="container d-flex justify-content-around" style="margin-top: 30px;"><!--Buttons-->
+      <a href="/manager/managerhome" class="nav-btn">Back To Home</a>
+  </div>
+</main>
