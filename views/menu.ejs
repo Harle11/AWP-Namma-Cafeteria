@@ -5,13 +5,16 @@
         <div class="col-sm-4">
           <div class="card card-bg">
             <a href="/submenu?type=<%= durls[i] %> ">
-              <div class="card-body">
-                <div class="card-title"><%= dishTypes[i] %> </div>
+              <div class="card-body" id="menu<%= durls[i] %>">
+                <div class="card-title"><%= dishTypes[i] %></div>
               </div>
             </a>
           </div>
         </div>
       <% } %>
     </div>
+  </div>
+  <div class="container d-flex justify-content-around" style="margin-top: 30px;"><!--Buttons-->
+    <a href="/home" class="nav-btn">Back To Home</a>
   </div>
 </main>

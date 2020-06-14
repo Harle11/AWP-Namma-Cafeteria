@@ -10,7 +10,7 @@
             <h6>Namma Cafeteria Credits</h6>
           </div>
           <div class="card-text">
-            &nbsp&nbsp&nbsp You have <%= mycredits %>  credits remaining.<br>
+            &nbsp&nbsp&nbsp You have <b><%= mycredits %></b> credits remaining.<br>
             <div class="namma-credits-div">
               <form action="/validatepayment" method="POST">
                 <input type="hidden" name="amount" value="<%= amt %>">
