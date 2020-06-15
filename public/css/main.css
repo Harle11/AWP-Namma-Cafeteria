@@ -647,3 +647,17 @@ tr:hover {
     background-image: url(../img/managerallorders.jpg);
     background-size: cover;
 }
+
+.addnewdish input {
+    border:2px solid #FFB03B;
+}
+
+.addnewdish input[type=submit] {
+    background-color: #FFB03B;
+    color: #fff;
+    cursor: pointer;
+}
+
+.addnewdish input:focus {
+    outline: none;
+}

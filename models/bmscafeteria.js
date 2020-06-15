@@ -16,6 +16,9 @@ const bmscafeteriaSchema = new mongoose.Schema({
   available:{
     type: Boolean,
     default: true
+  },
+  url:{
+    type: String
   }
 })
 

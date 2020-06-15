@@ -3,6 +3,7 @@ const mrouter = express.Router()
 const User = require('../models/user')
 const Cafeteria = require('../models/bmscafeteria')
 const Order = require('../models/orders')
+const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
 
 //Manager Home
 mrouter.get('/managerhome', (req, res) => {
@@ -23,7 +24,7 @@ mrouter.get('/managerhome', (req, res) => {
 })
 
 //Manage Menu
-mrouter.get('/managemenu', (req, res) => {
+mrouter.get('/managemenu', async (req, res) => {
   if(!req.session.userId){
     return res.render('login', {
       pageType:'login',
@@ -35,7 +36,117 @@ mrouter.get('/managemenu', (req, res) => {
   if(!req.session.usermanager){
     return res.redirect('/')
   }
-  return res.send("Manager Menu")
+  dish_types = await Cafeteria.distinct('dish_type')
+  durls = await Cafeteria.distinct('url')
+  return res.render('manager_menu', {
+    pageType:'managermenu',
+    dish_types: dish_types,
+    durls: durls
+  })
+})
+
+//Manager Submenu
+mrouter.get('/submenu', async (req, res) => {
+  if(!req.session.userId){
+    return res.render('login', {
+      pageType:'login',
+      user: new User(), 
+      npage: '/manager/managemenu',
+      message: 'Please Log In to continue'
+    })
+  }
+  if(!req.session.usermanager){
+    return res.redirect('/')
+  }
+  ditype = req.query.type
+  let dishes = await Cafeteria.find({url: ditype})
+  let onedish = await Cafeteria.findOne({url: ditype})
+  dtype = ''
+  durl = ''
+  isempty = true
+  if(onedish) {
+    isempty=false
+    dtype=onedish.dish_type
+    durl=onedish.url
+  }
+  return res.render('manager_submenu', {
+    pageType: 'managermenu',
+    dishes: dishes,
+    dtype: dtype,
+    durl:durl,
+    isempty: isempty
+  })
+})
+
+//Manager DeleteDish
+mrouter.get('/deletedish', async (req, res) => {
+  if(!req.session.userId){
+    return res.render('login', {
+      pageType:'login',
+      user: new User(), 
+      npage: '/manager/managemenu',
+      message: 'Please Log In to continue'
+    })
+  }
+  if(!req.session.usermanager){
+    return res.redirect('/')
+  }
+  dishid = req.query.dish_id
+  durl = req.query.durl
+  dish = await Cafeteria.findById(dishid)
+  if(dish){
+    await dish.remove()
+    return res.redirect('/manager/submenu?type='+durl)
+  } else {
+    return res.redirect('/manager/menu?deletion=failed')
+  }
+})
+
+//Manager AddDish
+mrouter.post('/newdish', async (req, res) => {
+  if(!req.session.userId){
+    return res.render('login', {
+      pageType:'login',
+      user: new User(), 
+      npage: '/manager/managemenu',
+      message: 'Please Log In to continue'
+    })
+  }
+  if(!req.session.usermanager){
+    return res.redirect('/')
+  }
+  dish = new Cafeteria({
+    dish_type: req.body.dishtype,
+    dish_name: req.body.dishname,
+    price: parseInt(req.body.price),
+    url: req.body.durl
+  })
+  newdish = await dish.save()
+  return res.redirect('/manager/submenu?type='+req.body.durl)
+})
+
+//Toggle Availability
+mrouter.get('/available', async (req, res) => {
+  if(!req.session.userId){
+    return res.render('login', {
+      pageType:'login',
+      user: new User(), 
+      npage: '/manager/managemenu',
+      message: 'Please Log In to continue'
+    })
+  }
+  if(!req.session.usermanager){
+    return res.redirect('/')
+  }
+  avl = req.query.avl
+  dish = await Cafeteria.findById(req.query.dishid)
+  if (avl=='false'){
+    dish.available = true
+  } else {
+    dish.available = false
+  }
+  await dish.save()
+  return res.redirect('/manager/submenu?type='+dish.url)
 })
 
 //Manage Orders

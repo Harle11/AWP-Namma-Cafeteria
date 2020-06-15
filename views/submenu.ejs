@@ -15,7 +15,11 @@
             <tr>
               <td><%= dishes[i].dish_name %></td>
               <td>₹<%= dishes[i].price %></td>
-              <td><a href="/addtocart?dish_id=<%= dishes[i]._id %>"><i class="fa fa-cart-plus" style="color: #FFB03B; font-size:xx-large;" title="Add to cart"></i></a></td>
+              <% if (dishes[i].available) { %>
+                <td><a href="/addtocart?dish_id=<%= dishes[i]._id %>"><i class="fa fa-cart-plus" style="color: #FFB03B; font-size:xx-large;" title="Add to cart"></i></a></td>
+              <% } else { %>
+                <td><i class="fa fa-cart-plus" style="color: #8a8a8a; font-size:xx-large;" title="Unavailable"></i></td>
+              <% } %>
             </tr>
           <% } %>
         </tbody>
